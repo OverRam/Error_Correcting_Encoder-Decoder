@@ -16,7 +16,7 @@ public class Main {
                 modeSend();
                 break;
             case "encode":
-                ModeEncode();
+                modeEncode();
                 break;
             case "decode":
                 modeDecode();
@@ -28,23 +28,35 @@ public class Main {
         byte[] encoded = FileMenage.readFileAsByteArr("encoded.txt");
         PrintAs.asHexAndBin(encoded, "encoded.txt");
 
-        byte[] received = encodingError(encoded);
-        PrintAs.asHexAndBin(received,"received");
+        byte[] received = simulateError(encoded);
+        PrintAs.asHexAndBin(received, "received");
         FileMenage.writeToFile(received, "received.txt");
     }
 
-    private static byte[] encodingError(byte[] arr) {
+    private static byte[] simulateError(byte[] arr) {
 
         return arr;
     }
 
-    private static void ModeEncode() {
-        byte[] encoded = FileMenage.readFileAsByteArr("send.txt");
+
+    private static byte[] decoding(byte[] arr) {
+
+        return arr;
+    }
+
+    private static void modeEncode() {
+        byte[] send = FileMenage.readFileAsByteArr("send.txt");
+        PrintAs.asHexAndBin(send, "send.txt");
+
+
+
 
     }
 
     private static void modeDecode() {
-        byte[] received = FileMenage.readFileAsByteArr("received.txt");
+        byte[] encoded = FileMenage.readFileAsByteArr("encoded.txt");
+        PrintAs.asHexAndBin(encoded, "encoded.txt");
+
         byte[] decode = new byte[2];
 
         FileMenage.tryCreateFile("decoded.txt");
