@@ -11,7 +11,7 @@ public class PrintAs {
         }
     }
 
-    private static void asHex(byte[] arr) {
+    static void asHex(byte[] arr) {
         System.out.print("hex view: ");
         for (byte e : arr) {
             System.out.print(Integer.toHexString(e) + " ");
@@ -19,7 +19,7 @@ public class PrintAs {
         System.out.println();
     }
 
-    private static void asBinary(byte[] arr) {
+    static void asBinary(byte[] arr) {
         System.out.print("bin view: ");
         for (byte e : arr) {
             System.out.print(Integer.toBinaryString(e) + " ");
