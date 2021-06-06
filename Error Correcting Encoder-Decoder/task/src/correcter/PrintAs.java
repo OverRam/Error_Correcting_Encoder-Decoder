@@ -2,13 +2,14 @@ package correcter;
 
 public class PrintAs {
     static void asHexAndBin(byte[] arr, String fileName) {
-        if (arr != null) {
-            System.out.println("\n" + fileName + ": ");
-            asHex(arr);
-            asBinary(arr);
-        } else {
-            System.out.println(fileName + " is null");
-        }
+        System.out.println("\n" + fileName + ": ");
+        asHex(arr);
+        asBinary(arr);
+    }
+
+    static void asHexAndBin(byte[] arr) {
+        asHex(arr);
+        asBinary(arr);
     }
 
     static void asHex(byte[] arr) {
