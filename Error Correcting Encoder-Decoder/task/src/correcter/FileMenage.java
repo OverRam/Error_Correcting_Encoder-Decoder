@@ -12,9 +12,9 @@ class FileMenage {
         try {
             return Files.readAllBytes(Path.of(path));
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error " + e.getMessage());
         }
-        return null;
+        return "Value is null".getBytes();
     }
 
     static void writeToFile(byte[] arr, String fileName) {
