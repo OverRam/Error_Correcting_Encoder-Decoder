@@ -99,6 +99,7 @@ public class Main {
                 temp += Integer.parseInt(intsArr[i].charAt(j) + "") * ind;
                 ind *= 2;
             }
+
             arr[i] = (byte) temp;
         }
         return arr;
