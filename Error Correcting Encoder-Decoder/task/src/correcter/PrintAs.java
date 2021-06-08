@@ -14,8 +14,11 @@ public class PrintAs {
 
     static void asHex(byte[] arr) {
         System.out.print("hex view: ");
+        String s;
         for (byte e : arr) {
-            System.out.print(Integer.toHexString(e) + " ");
+            s = Integer.toHexString(e).toUpperCase();
+            s = s.length() < 2 ? s + s : s;
+            System.out.print((s.length() > 3 ? s.subSequence(6, 8) : s) + " ");
         }
         System.out.println();
     }
