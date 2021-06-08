@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        menu();
+        menu("encode");
     }
 
-    private static void menu() {
+    private static void menu(String mode) {
         System.out.print("Write a mode: ");
-        String mode = new Scanner(System.in).nextLine();
+//        String mode = new Scanner(System.in).nextLine();
         switch (mode) {
             case "send":
                 modeSend();
@@ -60,6 +60,15 @@ public class Main {
         StringBuilder exp = new StringBuilder();
         for (int i = 0, k = 0; i < arr.length; i++) {
             temp[i] = Integer.toBinaryString(arr[i]);
+            //adding leading zeros if the string is less than 8 characters long
+            if (8 - temp[i].length() == 1) {
+                exp.append("0".repeat((8 - temp[i].length()) * 2));
+                k += (8 - temp[i].length()) * 2;
+                if (k % 6 == 0) {
+                    exp.append(".. ");
+                }
+            }
+            //doubling the value and putting periods at the end
             for (int j = 0; j < temp[i].length(); j++) {
                 k += 2;
                 exp.append(temp[i].charAt(j)).append(temp[i].charAt(j));
@@ -67,6 +76,7 @@ public class Main {
                     exp.append(".. ");
                 }
             }
+            //inserting missing dots
             if (i == arr.length - 1) {
                 exp.append(".".repeat(Math.max(0, 8 - (k % 6))));
             }
@@ -95,11 +105,10 @@ public class Main {
         for (int i = 0; i < intsArr.length; i++) {
             temp = 0;
             ind = 1;
-            for (int j = 0; j < 8; j++) {
+            for (int j = intsArr[i].length() - 1; j >= 0; j--) {
                 temp += Integer.parseInt(intsArr[i].charAt(j) + "") * ind;
                 ind *= 2;
             }
-
             arr[i] = (byte) temp;
         }
         return arr;
