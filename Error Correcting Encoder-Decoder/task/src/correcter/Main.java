@@ -2,7 +2,7 @@ package correcter;
 
 public class Main {
     public static void main(String[] args) {
-        menu("encode");
+        menu("send");
     }
 
     private static void menu(String mode) {
@@ -17,6 +17,9 @@ public class Main {
                 break;
             case "decode":
                 modeDecode();
+                break;
+            default:
+                System.out.println("Cannot recognize function, please try again.");
                 break;
         }
     }
@@ -48,7 +51,7 @@ public class Main {
         String ex = Expand.expandToDoubleBitsInByte(send);
         String parity = Parity.makeControlsBits(ex);
         System.out.println("\nencoded.txt:\nexpand: " + ex + "\nparity: " + parity);
-        byte[] part = ConvertToArray.strArrToByteArr(parity.split(" "));
+        byte[] part = ConvertToArray.strBinCodeToByteArr(parity.split(" "));
         PrintAs.asHex(part);
         FileMenage.writeToFile(part, "encoded.txt");
     }
